@@ -1,0 +1,16 @@
+{
+  "name": "assigment33",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --parallel --filter=api --filter=platform --filter=@skypi/ui dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.30.3",
+  "dependencies": {
+    "dotenv-cli": "^11.0.0"
+  }
+}
