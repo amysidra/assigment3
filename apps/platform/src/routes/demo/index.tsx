@@ -1,10 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@skypi/ui";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/")({
-  component: RouteComponent,
+	component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <div><Button>Hello World</Button></div>;
+	return (
+		<div>
+			<Button>Hello World</Button>
+		</div>
+	);
 }

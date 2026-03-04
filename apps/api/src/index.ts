@@ -1,17 +1,27 @@
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
-import { notesRouter } from './modules/notes/router'
+import { serve } from "@hono/node-server";
+import { Hono } from "hono";
+import { notesRouter } from "./modules/notes/router";
+import { cors } from "hono/cors";
 
 const app = new Hono()
-  .route("/api/notes", notesRouter)
+  .use(cors({
+    origin: "*",
+    allowMethods: ["GET", "POST", "PUT", "DELETE"],
+  }))
+	.route("/notes", notesRouter)
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+	.get("/", (c) => {
+		return c.text("Hello Hono!");
+	});
 
-serve({
-  fetch: app.fetch,
-  port: 8000
-}, (info) => {
-  console.log(`Server is running on http://localhost:${info.port}`)
-})
+export type AppType = typeof app;
+
+serve(
+	{
+		fetch: app.fetch,
+		port: 8000,
+	},
+	(info) => {
+		console.log(`Server is running on http://localhost:${info.port}`);
+	},
+);
